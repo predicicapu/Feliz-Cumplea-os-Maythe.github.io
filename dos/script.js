@@ -151,7 +151,7 @@ function handleCameraClick() {
 }
 
 // Lógica del reproductor de música
-const songs = ['musica/Joey_Montana-La_Melodia.mp3', 'song2.mp3', 'song3.mp3']; // Reemplaza con los nombres de tus archivos MP3 descargados (ej: 'mi_cancion1.mp3')
+const songs = ['musica/Joey_Montana-La_Melodia.mp3', 'musica/Silvestre Dangond, Nicky Jam - Cásate Conmigo .mp3', 'musica/Carlos Vives, S.Yatra- Robarte un Beso.mp3', 'musica/Cali Y El Dandee - Por Fin Te Encontré  .mp3', 'musica/Bonny Lovy - Enamorado .mp3']; // Reemplaza con los nombres de tus archivos MP3 descargados (ej: 'mi_cancion1.mp3')
 let currentSongIndex = 0;
 let isLooping = false;
 
@@ -435,3 +435,4 @@ window.onload = () => {
     }, { once: true });
 
 };
+
