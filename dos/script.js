@@ -248,8 +248,9 @@ const bookPages = [
     'img/portada.jpg',
     'img/imagen1.jpg',
     'img/imagen2.jpg',
-    'img/imagen3-jpg',
-    'img/portda_trasera.jpg'
+    'img/imagen3.jpg',
+    'img/imagen4.jpg',
+    'img/imagen5.jpg'
 ];
 
 const book = document.getElementById('virtual-book');
@@ -432,4 +433,5 @@ window.onload = () => {
         }, balloonsStart);
 
     }, { once: true });
+
 };
