@@ -1,0 +1,529 @@
+html, body{
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+
+    background: radial-gradient(circle at center,
+        #ffe1f0 0%,
+        #ffb3d9 40%,
+        #ff7fbf 70%,
+        #d63384 100%);
+    transition: background 1s ease;
+}
+
+/* CONTENEDOR INTRO */
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    overflow: hidden;
+
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+}
+
+body.intense {
+    background: radial-gradient(circle at center,
+        #f5e3e2 0%,    /* más claro que #e1b5b1 */
+        #edccc9 35%,   /* transición suave */
+        #e1b5b1 65%,   /* tu color base protagonista */
+        #b98c88 100%   /* más oscuro para dar profundidad */
+    );
+}
+
+
+
+/* TELÓN */
+#telon {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translateY(0);
+    transition: transform 2.8s cubic-bezier(.25,.8,.25,1);
+    box-shadow: inset 0 -40px 60px rgba(0,0,0,0.35);
+    pointer-events: none;
+}
+
+#intro.open #telon {
+    transform: translateY(-100%);
+}
+
+
+/* TELÓN SE LEVANTA */
+#intro.open #telon {
+    transform: translateY(-100%);
+}
+
+/* SNOOPY */
+#snoopy {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: 260px;
+    opacity: 0;
+}
+
+/* ANIMACIÓN SNOOPY */
+#intro.show-snoopy #snoopy {
+    animation: snoopyShow 3.5s ease-in-out forwards;
+}
+
+@keyframes snoopyShow {
+    0% {
+        transform: translateX(-50%) scale(0) translateY(0);
+        opacity: 0;
+    }
+    30% {
+        transform: translateX(-50%) scale(1.1) translateY(-30px);
+        opacity: 1;
+    }
+    55% {
+        transform: translateX(-50%) scale(1) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) scale(0.75) translateY(120vh);
+        opacity: 1;
+    }
+}
+
+
+/* GLOBOS */
+#balloon-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#balloon-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#elements {
+    position: fixed;
+    inset: 0;
+    pointer-events: auto;
+    z-index: 0; /* Por debajo de los globos */
+}
+
+#happy-birthday {
+    position: absolute;
+    top: -50vh; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70vw;
+    max-width: 800px;
+    transition: top 4s ease-out;
+    pointer-events: auto;
+}
+
+/* 📱 ANDROID / CELULAR */
+@media (max-width: 768px) {
+    #happy-birthday {
+        width: 85vw;
+        top: -30vh;
+        max-width: none;
+    }
+}
+
+/* 🖥️ COMPUTADORA */
+@media (min-width: 769px) {
+    #happy-birthday {
+        width: 46vw;
+        top: -60vh;
+    }
+}
+
+#happy-birthday.active {
+    top: -4.5vh;
+}
+@media (max-width: 768px) {
+    #happy-birthday.active {
+        top: 10vh;   /* por ejemplo, más abajo en móvil */
+    }
+}
+
+
+#side-left {
+    position: absolute;
+    bottom: -50vh; /* Inicial fuera de pantalla abajo */
+    left: 10%;
+    width: clamp(100px, 10vw, 320px);
+    transition: bottom 4s ease-out;
+    pointer-events: auto;
+}
+
+#side-left.active {
+    bottom: 30vh; /* Mitad de pantalla aprox. */
+    animation: float 3s infinite ease-in-out;
+}
+@media (max-width: 768px) {
+    #side-left.active {
+        top: 40vh;   /* por ejemplo, más abajo en móvil */
+    }
+}
+
+#side-right {
+    position: absolute;
+    bottom: -50vh;
+    right: 10%;
+    width: clamp(100px, 10vw, 320px);
+    transition: bottom 4s ease-out;
+    pointer-events: auto;
+}
+
+#side-right.active {
+    bottom: 30vh;
+    animation: float 3s infinite ease-in-out;
+}
+
+@media (max-width: 768px) {
+    #side-right.active {
+        top: 40vh;   /* por ejemplo, más abajo en móvil */
+    }
+}
+
+#num2 {
+    position: absolute;
+    top: 110vh; /* Inicial fuera abajo */
+    left: clamp(10%, 50% - 7.5vw, 50% - 90px);
+    width: 15vw;
+    max-width: 150px;
+    transition: top 2.5s ease-out 4s; /* Retraso de 1s */
+    pointer-events: auto;
+}
+
+#num2.active {
+    top: 70vh; /* Debajo del letrero */
+    animation: float 2.5s infinite ease-in-out;
+}
+
+/* =========================
+   📱 NUM2 - MÓVIL
+   ========================= */
+
+@media (max-width: 768px) {
+    #num2.active {
+        top: 68vh;  /* más abajo en celular */
+    }
+}
+
+/* =========================
+   🖥️ NUM2 - PC
+   ========================= */
+
+@media (min-width: 769px) {
+    #num2.active {
+        top: 72vh;  /* más arriba en computadora */
+    }
+}
+
+#num1 {
+    position: absolute;
+    top: 110vh;
+    left: clamp(50% + 10px, 50% + 1.5vw, 90%);
+    width: 10vw;
+    max-width: 100px;
+    transition: top 2.5s ease-out 4s;
+    pointer-events: auto;
+}
+
+#num1.active {
+    top: 70vh;
+    animation: float 2.5s infinite ease-in-out;
+}
+
+/* =========================
+   📱 NUM2 - MÓVIL
+   ========================= */
+
+@media (max-width: 768px) {
+    #num1.active {
+        top: 68vh;  /* más abajo en celular */
+    }
+}
+
+/* =========================
+   🖥️ NUM2 - PC
+   ========================= */
+
+@media (min-width: 769px) {
+    #num1.active {
+        top: 72vh;  /* más arriba en computadora */
+    }
+}
+
+#camera-container {
+    position: absolute;
+    bottom: 50vh; /* Posición final en la parte inferior central */
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    width: 40vw;
+    max-width: 350px;
+    height: 40vw; /* Nueva altura para que los % funcionen */
+    max-height: 350px;
+    transition: transform 0.3s ease, opacity 1.5s ease-out 4s; /* Transición rápida para hover, con delay solo para opacity inicial */
+    pointer-events: auto;
+    cursor: pointer; /* Como botón */
+    overflow: visible;
+}
+
+#camera-container.active {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+#camera-container:hover {
+    transform: translateX(-50%) scale(1.2);
+}
+
+#camera {
+    transform: rotate(90deg);
+    transform-origin: center center;
+    position: absolute;
+    top: 72%;
+    left: 0;    
+    width: 100%;
+    height: auto;
+    z-index: 3;
+}
+
+#photo {
+    position: absolute;
+    background: black;
+    top: 62%; /* Ajuste aproximado para el área de la pantalla de la cámara */
+    left: 22%;
+    width: 52%;
+    height: 60%;
+    object-fit: cover; /* Ajusta la imagen dentro del área */
+    border-radius: 5px; /* Opcional para bordes suaves */
+    z-index: 2;
+}
+
+/* Animación de flotación */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* Clase para animación de desaparecer */
+#balloon-container,
+#elements {
+    transition: opacity 2s ease-out;
+}
+
+.fade-out {
+    opacity: 0 !important;
+}
+
+
+/* ESTILOS PARA EL REPRODUCTOR DE MÚSICA */
+#music-player {
+    position: fixed;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 0;
+    overflow: auto;
+    z-index: 10;
+    background: transparent;
+    gap: 20px; /* o gap: 12px según prefieras */
+}
+
+.player-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    padding: 20px;
+    width: 90vw;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#virtual-book {
+    width: 90vw;
+    max-width: 350px;
+    height: calc(90vw * 1.5); /* Proporción 2:3 */
+    max-height: 525px;
+    position: relative;
+    margin: 0 auto;
+    perspective: 1500px;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: left center;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.page:hover {
+    box-shadow: 8px 8px 25px rgba(0,0,0,0.4);
+}
+
+.page .front,
+.page .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.page .front {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page .back {
+    background: white;
+    transform: rotateY(180deg);
+}
+
+.page img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+}
+
+
+.page-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+.page-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: all 0.3s ease;
+}
+
+.page-dot.active {
+    background: #667eea;
+    transform: scale(1.3);
+}
+
+#track-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.timeline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+#current-time,
+#duration {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    min-width: 40px;
+    text-align: center;
+}
+
+#seek-bar {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: #ddd;
+    transition: height 0.2s ease;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+#seek-bar:hover {
+    height: 8px;
+}
+
+#seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#seek-bar::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.control-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+}
+
+.control-icon:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.control-icon:active {
+    transform: scale(0.95);
+}
+
+#repeat.active {
+    filter: brightness(1.5);
+}

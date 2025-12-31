@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorpresa</title>
+    <link rel="stylesheet" href="estilo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+    <img id="telon" src="https://img.freepik.com/fotos-premium/fotografia-cerca-tela-rosada-vibrante-pliegues-pliegues-suaves_343732-41619.jpg?semt=ais_hybrid&w=740&q=80">
+    <img id="snoopy" src="https://i.pinimg.com/originals/03/a9/15/03a915d890976a02a0841cac4f73ffe6.png">
+</div>
+
+<!-- GLOBOS -->
+<div id="balloon-container"></div>
+
+<!-- ELEMENTOS NUEVOS -->
+<div id="elements">
+    <!-- LETRERO HAPPY BIRTHDAY -->
+    <img id="happy-birthday" src="https://cdn3d.iconscout.com/3d/premium/thumb/globos-de-feliz-cumpleanos-3d-icon-png-download-4504820.png" alt="Happy Birthday">
+
+    <!-- GLOBOS LATERALES -->
+    <img id="side-left" src="https://i.pinimg.com/originals/d1/fe/27/d1fe27730a1b96a4ea493677fa979c2e.png" alt="Globo izquierdo">
+    <img id="side-right" src="https://i.pinimg.com/originals/d1/fe/27/d1fe27730a1b96a4ea493677fa979c2e.png" alt="Globo derecho">
+
+    <!-- GLOBOS NUMÉRICOS 2 1 -->
+    <img id="num2" src="https://i.pinimg.com/originals/1d/e5/f5/1de5f57eedc1885bf1539cd2d24a8779.png" alt="Número 2">
+    <img id="num1" src="https://i.pinimg.com/originals/2c/38/16/2c38166f75f85a31dc6e43cc63727073.png" alt="Número 1">
+
+    <!-- CÁMARA -->
+    <div id="camera-container">
+        <img id="photo" src="img/maytheim1.jpeg" alt="Foto dentro de la cámara">
+        <img id="camera" src="https://i.pinimg.com/originals/82/ae/7d/82ae7d32533e4c68b0ea77bc3a087a11.png" alt="Cámara">
+    </div>
+</div>
+
+<!-- REPRODUCTOR DE MÚSICA -->
+<div id="music-player">
+  <div id="virtual-book"></div>
+
+  <div class="player-container">
+    <!-- Título que reemplaza al visualizer -->
+    <div id="track-title" role="status" aria-live="polite">Sin reproducción</div>
+
+    <div class="timeline">
+      <span id="current-time">0:00</span>
+      <input type="range" id="seek-bar" min="0" max="100" value="0">
+      <span id="duration">0:00</span>
+    </div>
+
+    <div class="controls">
+      <img id="prev" class="control-icon" src="img/back.png" alt="Música anterior">
+      <img id="play" class="control-icon" src="img/play.png" alt="Reproducir">
+      <img id="pause" class="control-icon" src="img/pausa.png" alt="Pausar" style="display: none;">
+      <img id="next" class="control-icon" src="img/next.png" alt="Música siguiente">
+      <img id="repeat" class="control-icon" src="img/repet.png" alt="Repetir la misma música">
+    </div>
+  </div>
+
+  <!-- Un solo audio -->
+  <audio id="player" data-track-title="Nombre por defecto" preload="metadata">
+    <!-- Puedes dejar <source> si usas varios formatos -->
+    <!-- <source src="ruta/a/tu-cancion.mp3" type="audio/mpeg"> -->
+  </audio>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
